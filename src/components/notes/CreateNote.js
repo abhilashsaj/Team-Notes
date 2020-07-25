@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createNote } from '../../store/actions/noteActions'
 
 class CreateNote extends Component {
   state = {
@@ -13,6 +15,7 @@ class CreateNote extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
+    this.props.createNote(this.state);
   }
   render() {
     return (
@@ -34,6 +37,12 @@ class CreateNote extends Component {
       </div>
     )
   }
+  
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    createNote: (note) => dispatch(createNote(note))
+  }
 }
 
-export default CreateNote
+export default connect(null, mapDispatchToProps)(CreateNote)
