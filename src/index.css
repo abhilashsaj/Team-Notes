@@ -8,8 +8,10 @@ body {
   font-family: sans-serif;
   background: url(/img/white_bg.jpg) no-repeat;
   background-size: 100%;
-  background-position: bottom;
+  background-repeat: no-repeat;
+
   background-color: #95e8f3;
+  
   min-height: 100%;
 }
 
