@@ -1,12 +1,24 @@
 export const signIn = (credentials) => {
-    return (dispatch, getState, {getFirebase}) => {
+    return (dispatch, getState, {getFirebase,getFirestore}) => {
       const firebase = getFirebase();
+      const firestore = getFirestore();
       
       firebase.auth().signInWithEmailAndPassword(
         credentials.email,
         credentials.password
       ).then(() => {
         dispatch({ type: 'LOGIN_SUCCESS' });
+        
+        firestore.collection('notifications').doc(credentials.email).set({
+            content: 'Logged In',
+            user: `${credentials.email}`,
+            time: new Date()
+          }).then(function() {
+            console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
       }).catch((err) => {
         dispatch({ type: 'LOGIN_ERROR', err });
       });

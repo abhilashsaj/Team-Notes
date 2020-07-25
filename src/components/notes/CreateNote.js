@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createNote } from '../../store/actions/noteActions'
+import { Redirect } from 'react-router-dom'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 class CreateNote extends Component {
   state = {
@@ -19,6 +23,8 @@ class CreateNote extends Component {
     this.props.history.push('/');
   }
   render() {
+    const { auth  } = this.props;
+    if (auth.role != 'Editor') return <Redirect to='/' />
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -40,10 +46,18 @@ class CreateNote extends Component {
   }
   
 }
+const mapStateToProps = (state) => {
+  // console.log(state);
+  console.log(state, "auth")
+  return {
+    auth: state.firebase.auth
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
-    createNote: (note) => dispatch(createNote(note))
+    createNote: (note) => dispatch(createNote(note)),
+    
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateNote)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNote)
