@@ -43,6 +43,16 @@ const SignedInLinks = (props) => {
           {props.profile.initials}
         </NavLink></li> */}
       </ul>
+      <ul class="sidenav" id="mobile-demo">
+      <li>
+        
+          <Users/>
+          
+        </li>
+        <li><NavLink to='/create'>New Note</NavLink></li>
+        <li onClick={inactive}><a onClick={props.signOut}>Log Out</a></li>
+        
+      </ul>
     </div>
   )
 }

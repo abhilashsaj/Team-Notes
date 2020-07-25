@@ -8,7 +8,7 @@ class SignUp extends Component {
     password: '',
     firstName: '',
     lastName: '',
-    role: '',
+    role: 'Editor',
     status: 'active'
   } 
   handleChange = (e) => {
@@ -45,11 +45,11 @@ class SignUp extends Component {
             
           </div> */}
           <label>Role</label>
-  <select id="role" class="browser-default">
-    <option value="" disabled selected>Choose your option</option>
-    <option value="Editor">Editor</option>
-    <option value="Reader">Reader</option>
-  </select>
+          <select id="role" class="browser-default">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="Editor" onChange={this.handleChange}>Editor</option>
+            <option value="Reader" onChange={this.handleChange}>Reader</option>
+          </select>
           <div className="input-field">
             <label htmlFor="firstName">First Name</label>
             <input type="text" id='firstName' onChange={this.handleChange} />

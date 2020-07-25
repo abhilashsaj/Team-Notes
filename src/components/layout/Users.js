@@ -8,13 +8,19 @@ import { NavLink } from 'react-router-dom'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 
+import Icon from '@material-ui/core/Icon';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      color: theme.palette.text.primary,
+    },
+  }));
 function compare(a, b) {
     // Use toUpperCase() to ignore character casing
-    const item1 = a.title.toUpperCase();
+    if(a!=null && b!=null){
+        const item1 = a.title.toUpperCase();
     const item2 = b.title.toUpperCase();
   
     let comparison = 0;
@@ -24,6 +30,8 @@ function compare(a, b) {
       comparison = -1;
     }
     return comparison;
+    }
+    
 }
 
   const HtmlTooltip = withStyles((theme) => ({
@@ -50,11 +58,11 @@ class Users extends React.Component {
                     activeUsers.push(users[i])
                 }
             }
-        activeUsers.sort(compare);
+        
         users = activeUsers
     }
 
-    if(users!=null && users.length<4){
+    if(users!=null && users.length<3){
         return (
         
             <li>
@@ -71,7 +79,7 @@ class Users extends React.Component {
                             </React.Fragment>
                             }
                         >
-                            <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{user.initials}</button>
+                            <button className="btn btn-floating"  style={{border:'white 2px solid',marginLeft:'-8px',backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{user.initials}</button>
                         </HtmlTooltip>
                         
                     )
@@ -114,25 +122,14 @@ class Users extends React.Component {
                 >
                     <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[1].initials}</button>
                 </HtmlTooltip>
-                <Popover 
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                    transformOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    >
-                    The content of the Popover.
-                    </Popover>
+                <Icon style={{ fontSize: '3em', marginBottom: '-20px',marginLeft:'-8px', }}>add_circle</Icon>
                 
             </li>
         )
     
     }else{
         return(
-            <li>hi</li>
+            <li></li>
 
         )
     }

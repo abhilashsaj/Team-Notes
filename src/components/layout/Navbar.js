@@ -10,6 +10,13 @@ const Navbar = (props) => {
   const links = auth.uid ? <SignedInLinks profile={profile} auth={auth} /> : <SignedOutLinks />;
 
   return (
+    <div>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
     <nav className=" nav-extended nav-wrapper grey darken-3">
       <div className=" nav-wrapper grey darken-3 container">
       
@@ -20,6 +27,8 @@ const Navbar = (props) => {
       </div>
       
     </nav>
+    </div>
+    
   )
 }
 
