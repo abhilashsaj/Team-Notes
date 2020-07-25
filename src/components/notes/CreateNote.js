@@ -24,7 +24,8 @@ class CreateNote extends Component {
   }
   render() {
     const { auth  } = this.props;
-    if (auth.role != 'Editor') return <Redirect to='/' />
+    if (!auth.uid) return <Redirect to='/signin' /> 
+    if (auth.role == 'Reader') return <Redirect to='/' />
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>

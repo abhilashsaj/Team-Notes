@@ -34,7 +34,7 @@ export const signIn = (credentials) => {
       firebase.auth().signOut().then(() => {
         // firestore.collection('users').doc(resp.user.uid).update({status: "inactive"});
         dispatch({ type: 'SIGNOUT_SUCCESS' })
-
+        
       });
     }
   }

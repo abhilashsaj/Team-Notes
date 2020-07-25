@@ -62,7 +62,7 @@ class Users extends React.Component {
         users = activeUsers
     }
 
-    if(users!=null && users.length<3){
+    if(users!=null && users.length<4){
         return (
         
             <li>
@@ -95,6 +95,7 @@ class Users extends React.Component {
                 <HtmlTooltip key={users[0].id}
                     title={
                     <React.Fragment>
+                        
                         <Typography color="inherit">{users[0].firstName} {users[0].lastName}</Typography>
                         <b>{users[0].role}</b> 
                     </React.Fragment>
@@ -112,18 +113,31 @@ class Users extends React.Component {
                 >
                     <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[1].initials}</button>
                 </HtmlTooltip>
-                <HtmlTooltip key={users[1].id}
+                <HtmlTooltip key={users[2].id}
                     title={
                     <React.Fragment>
-                        <Typography color="inherit">{users[1].firstName} {users[1].lastName}</Typography>
-                        <b>{users[1].role}</b> 
+                        <Typography color="inherit">{users[2].firstName} {users[2].lastName}</Typography>
+                        <b>{users[2].role}</b> 
                     </React.Fragment>
                     }
                 >
-                    <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[1].initials}</button>
+                    <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[2].initials}</button>
                 </HtmlTooltip>
-                <Icon style={{ fontSize: '3em', marginBottom: '-20px',marginLeft:'-8px', }}>add_circle</Icon>
                 
+                <HtmlTooltip key={users[2].id}
+                            title={
+                            <React.Fragment>
+                                {/* <Typography color="inherit">{JSON.stringify(obj)} {users[0].lastName}: <b>{users[0].role}</b> </Typography> */}
+                                {users && users.map(user =>{
+                                    return (
+                                        <Typography color="inherit">{user.firstName} {user.lastName}:<b>{user.role}</b> </Typography>
+                                    )
+                                })}
+                            </React.Fragment>
+                            }
+                        >
+                            <button className="btn btn-floating"  style={{border:'white 2px solid',marginLeft:'-8px',backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>+{users.length-2}</button>
+                </HtmlTooltip>
             </li>
         )
     

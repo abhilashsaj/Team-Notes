@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 import Users from './Users'
-
+import { Redirect } from 'react-router-dom'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -15,9 +15,12 @@ function inactive(){
   var db = firebase.firestore();
 
   
-  console.log("inactive "+ uid)
+  console.log("inactive "+ uid);
+  
   return db.collection("users").doc(uid).update({status: "inactive"}).then(function() {
     console.log("Document successfully updated!");
+    
+    
     })
     .catch(function(error) {
         // The document probably doesn't exist.
