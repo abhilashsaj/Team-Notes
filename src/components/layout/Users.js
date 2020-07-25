@@ -5,22 +5,70 @@ import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
 import { NavLink } from 'react-router-dom'
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
 
 
+function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const item1 = a.title.toUpperCase();
+    const item2 = b.title.toUpperCase();
+  
+    let comparison = 0;
+    if (item1 > item2) {
+      comparison = 1;
+    } else if (item1 < item2) {
+      comparison = -1;
+    }
+    return comparison;
+}
+
+  const HtmlTooltip = withStyles((theme) => ({
+    tooltip: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }))(Tooltip);
+  
 class Users extends React.Component {
    
   render() {
-    const {users} = this.props
+    var {users} = this.props
+    var activeUsers=[]
     console.log(users);
+    if(users!=null){
+        var i;
+            for (i = 0; i < users.length; i++) { 
+                if(users[i].status==='active'){
+                    //console.log(products[i])
+                    activeUsers.push(users[i])
+                }
+            }
+        activeUsers.sort(compare);
+        users = activeUsers
+    }
     return (
       <li>
             {users && users.map(user =>{
                 return (
                     
-                    <a  className="btn btn-floating tooltipped" data-position="bottom" data-tooltip="I am a tooltip" key={user.id} style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>
-                        {user.initials}
-                    </a>
-                        
+                    
+                    
+                    <HtmlTooltip key={user.id}
+                        title={
+                        <React.Fragment>
+                            <Typography color="inherit">{user.firstName} {user.lastName}</Typography>
+                            <b>{user.role}</b> 
+                        </React.Fragment>
+                        }
+                    >
+                        <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{user.initials}</button>
+                    </HtmlTooltip>
                     
                 )
             })}
@@ -44,3 +92,6 @@ export default compose(
   ])
 )(Users)
 
+{/* <a  className="btn btn-floating"  key={user.id} style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>
+                        {user.initials}
+                    </a> */}

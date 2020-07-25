@@ -3,7 +3,30 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 import Users from './Users'
+
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+var uid
+function inactive(){
+  
+  
+  var db = firebase.firestore();
+
+  
+  console.log("inactive "+ uid)
+  return db.collection("users").doc(uid).update({status: "inactive"}).then(function() {
+    console.log("Document successfully updated!");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
+  
+}
 const SignedInLinks = (props) => {
+  uid = props.auth.uid
   return (
     <div>
       <ul className="right">
@@ -15,8 +38,8 @@ const SignedInLinks = (props) => {
           
         </li>
         <li><NavLink to='/create'>New Note</NavLink></li>
-        <li><a onClick={props.signOut}>Log Out</a></li>
-        <li><NavLink to='/' className="btn btn-floating pink lighten-1">
+        <li onClick={inactive}><a onClick={props.signOut}>Log Out</a></li>
+        <li ><NavLink to='/' className="btn btn-floating pink lighten-1">
           {props.profile.initials}
         </NavLink></li>
       </ul>

@@ -15,11 +15,14 @@ export const signIn = (credentials) => {
   }
 
   export const signOut = () => {
-    return (dispatch, getState, {getFirebase}) => {
+    return (dispatch, getState, {getFirebase,getFirestore}) => {
       const firebase = getFirebase();
+      const firestore = getFirestore();
   
       firebase.auth().signOut().then(() => {
+        // firestore.collection('users').doc(resp.user.uid).update({status: "inactive"});
         dispatch({ type: 'SIGNOUT_SUCCESS' })
+
       });
     }
   }
