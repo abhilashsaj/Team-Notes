@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import moment from 'moment'
 
 const NoteDetails = (props) => {
   const { note } = props;
@@ -15,7 +16,7 @@ const NoteDetails = (props) => {
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by {note.authorFirstName} {note.authorLastName}</div>
-            <div>2nd September, 2am</div>
+            <div>{moment(note.createdAt.toDate()).calendar()}</div>
           </div>
         </div>
       </div>
@@ -23,7 +24,7 @@ const NoteDetails = (props) => {
   } else {
     return (
       <div className="container center">
-        <p>Loading project...</p>
+        <p>Loading note...</p>
       </div>
     )
   }
@@ -34,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
   const notes = state.firestore.data.notes;
   const note = notes ? notes[id] : null
   return {
-    note: note
+    note: note,
+    auth: state.firebase.auth
   }
 }
 
