@@ -29,7 +29,7 @@ const SignedInLinks = (props) => {
   uid = props.auth.uid
   return (
     <div>
-      <ul className="right">
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li>
           {/* <NavLink to='/' className="btn btn-floating pink lighten-1">
             {props.profile.initials}
@@ -39,9 +39,9 @@ const SignedInLinks = (props) => {
         </li>
         <li><NavLink to='/create'>New Note</NavLink></li>
         <li onClick={inactive}><a onClick={props.signOut}>Log Out</a></li>
-        <li ><NavLink to='/' className="btn btn-floating pink lighten-1">
+        {/* <li ><NavLink to='/' className="btn btn-floating pink lighten-1">
           {props.profile.initials}
-        </NavLink></li>
+        </NavLink></li> */}
       </ul>
     </div>
   )

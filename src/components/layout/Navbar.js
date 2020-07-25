@@ -10,11 +10,15 @@ const Navbar = (props) => {
   const links = auth.uid ? <SignedInLinks profile={profile} auth={auth} /> : <SignedOutLinks />;
 
   return (
-    <nav className="nav-wrapper grey darken-3">
-      <div className="container">
+    <nav className=" nav-extended nav-wrapper grey darken-3">
+      <div className=" nav-wrapper grey darken-3 container">
+      
         <Link to='/' className="brand-logo">Note App</Link>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         {links}
+      
       </div>
+      
     </nav>
   )
 }

@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
+import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -52,29 +53,90 @@ class Users extends React.Component {
         activeUsers.sort(compare);
         users = activeUsers
     }
-    return (
-      <li>
-            {users && users.map(user =>{
-                return (
-                    
-                    
-                    
-                    <HtmlTooltip key={user.id}
-                        title={
-                        <React.Fragment>
-                            <Typography color="inherit">{user.firstName} {user.lastName}</Typography>
-                            <b>{user.role}</b> 
-                        </React.Fragment>
-                        }
+
+    if(users!=null && users.length<4){
+        return (
+        
+            <li>
+                {users && users.map(user =>{
+                    return (
+                        
+                        
+                        
+                        <HtmlTooltip key={user.id}
+                            title={
+                            <React.Fragment>
+                                <Typography color="inherit">{user.firstName} {user.lastName}</Typography>
+                                <b>{user.role}</b> 
+                            </React.Fragment>
+                            }
+                        >
+                            <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{user.initials}</button>
+                        </HtmlTooltip>
+                        
+                    )
+                })}
+                
+            </li>
+        );
+        
+    }
+    else if(users!=null){
+        return(
+            <li>
+                <HtmlTooltip key={users[0].id}
+                    title={
+                    <React.Fragment>
+                        <Typography color="inherit">{users[0].firstName} {users[0].lastName}</Typography>
+                        <b>{users[0].role}</b> 
+                    </React.Fragment>
+                    }
+                >
+                    <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[0].initials}</button>
+                </HtmlTooltip>
+                <HtmlTooltip key={users[1].id}
+                    title={
+                    <React.Fragment>
+                        <Typography color="inherit">{users[1].firstName} {users[1].lastName}</Typography>
+                        <b>{users[1].role}</b> 
+                    </React.Fragment>
+                    }
+                >
+                    <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[1].initials}</button>
+                </HtmlTooltip>
+                <HtmlTooltip key={users[1].id}
+                    title={
+                    <React.Fragment>
+                        <Typography color="inherit">{users[1].firstName} {users[1].lastName}</Typography>
+                        <b>{users[1].role}</b> 
+                    </React.Fragment>
+                    }
+                >
+                    <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{users[1].initials}</button>
+                </HtmlTooltip>
+                <Popover 
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
                     >
-                        <button className="btn btn-floating"  style={{backgroundColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)}}>{user.initials}</button>
-                    </HtmlTooltip>
-                    
-                )
-            })}
-            
-        </li>
-    );  
+                    The content of the Popover.
+                    </Popover>
+                
+            </li>
+        )
+    
+    }else{
+        return(
+            <li>hi</li>
+
+        )
+    }
+      
   }
 } 
 

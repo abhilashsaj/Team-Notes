@@ -36,6 +36,20 @@ class SignUp extends Component {
             <label htmlFor="password">Password</label>
             <input type="password" id='password' onChange={this.handleChange} />
           </div>
+          {/* <div className="input-field ">
+          <label>Materialize Select</label>
+            <select id="role" onChange={this.handleChange}>
+              <option value="Editor" defaultValue>Editor</option>
+              <option value="Reader">Reader</option>
+            </select>
+            
+          </div> */}
+          <label>Role</label>
+  <select id="role" class="browser-default">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="Editor">Editor</option>
+    <option value="Reader">Reader</option>
+  </select>
           <div className="input-field">
             <label htmlFor="firstName">First Name</label>
             <input type="text" id='firstName' onChange={this.handleChange} />
@@ -44,10 +58,7 @@ class SignUp extends Component {
             <label htmlFor="lastName">Last Name</label>
             <input type="text" id='lastName' onChange={this.handleChange} />
           </div>
-          <div className="input-field">
-            <label htmlFor="role">Role</label>
-            <input type="text" id='role' onChange={this.handleChange} />
-          </div>
+          
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Sign Up</button>
             <div className="center red-text">
