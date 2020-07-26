@@ -37,7 +37,7 @@ When a user logs in/registers or makes any changes, notification will be display
 
 Frontend Frameworks: React, Redux, Material-ui
 
-Backend: Google firestore, Authentication, Hosting, Cloud Functions(Node.js)
+Backend:  Google Firestore,  Cloud Functions(Node.js), Authentication, Hosting
 
 Database collections:  
 
@@ -66,14 +66,12 @@ Route guarding is done.
 Mobile responsive.
 
 
-## Usage Guide
+## Installation
 
-This project was bootstrapped with [Create React App]
+Clone repo `git clone https://github.com/abhilashsaj/Team-Notes.git` 
 
-  Clone repo `git clone ...` 
-  
-  npm install
-  
-  npm start
+Install packages `npm install`
+
+Run server `npm start`
 
   
