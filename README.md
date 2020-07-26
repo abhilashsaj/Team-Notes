@@ -74,4 +74,22 @@ Install packages `npm install`
 
 Run server `npm start`
 
+## Screenshots
+
+### Navbar 
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/pre_1.JPG)
+
+### Presence
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/pre_3.png)  
+
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/pre_4.JPG)
+
+### Sign In/ Registeration
   
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/signin.JPG)  
+
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/signup.JPG)  
+
+### Landing
+
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/landing.JPG)
