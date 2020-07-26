@@ -80,15 +80,27 @@ Run server `npm start`
 ![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/pre_1.JPG)
 
 ### Presence
+
 ![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/pre_3.png)  
 
 ![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/pre_4.JPG)
+
+### Notification
+
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/notification.JPG)
+
+### Notes
+
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/notes.JPG)
+
+![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/new_note.JPG)  
 
 ### Sign In/ Registeration
   
 ![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/signin.JPG)  
 
 ![Navbar](https://github.com/abhilashsaj/Team-Notes/blob/master/images/signup.JPG)  
+
 
 ### Landing
 
